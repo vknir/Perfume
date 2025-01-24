@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 import { MONGO_URL } from "./config/config";
 import { PerfumeModel } from "./db/db";
 
-
 const app = express();
 const port = process.env.PORT || 3000; // port if not available use port 3000;
 
@@ -23,6 +22,32 @@ app.get("/", async (req, res) => {
 app.use(express.json());
 
 app.post("/create", async (req, res) => {
-  console.log(req.body) 
- 
+  const {
+    name,
+    description,
+    price,
+    size,
+    count,
+    rating,
+    review,
+    primary_img,
+    alt_img,
+  } = req.body;
+  try {
+    const response = await PerfumeModel.create({
+      name,
+      description,
+      price,
+      primary_img,
+      count,
+      size,
+      rating,
+      review,
+      alt_img,
+    });
+    
+    res.status(200).json({ message: "data inserted successfully" });
+  } catch (e) {
+    res.status(500).json({ message: "unable to update" });
+  }
 });
