@@ -27,7 +27,7 @@ export default function Carousel() {
   
 
   return (
-    <div className="relative h-fit w-full bg-neutral-100 px-7 flex justify-between items-center">
+    <div className="relative h-fit w-full bg-neutral-100 px-4 flex justify-between items-center">
       <button className="hover:cursor-pointer" onClick={()=> setIndex( prev=> (prev +3)%4)}>
         <ChevronLeft size={40}/>
       </button>

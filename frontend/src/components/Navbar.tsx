@@ -3,7 +3,7 @@ import { Menu, Search, ShoppingCart } from "lucide-react";
 export default function Navabar() {
   return (
    
-    <div className="p-7  rounded-t-xl bg-neutral-100 flex justify-between items-center">
+    <div className="p-4 rounded-t-xl bg-neutral-100 flex justify-between items-center">
       {/** import menu icon  */}
       <Menu strokeWidth={1} size={24} />
 
