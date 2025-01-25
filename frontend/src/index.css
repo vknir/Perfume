@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+@theme {
+    --animate-fade-in-scale: fade-in-scale 4s ease-out infinite;
+    @keyframes fade-in-scale {
+      0% {
+        opacity: .7;
+        transform: scale(0.95);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+    }
+  }

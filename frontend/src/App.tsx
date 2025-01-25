@@ -1,5 +1,6 @@
 import Carousel from "./components/Carousel";
 import Navbar from "./components/Navbar";
+import PerfumeCardContainer from "./components/PerfumeCardContainer";
 import { Truck } from "lucide-react";
 
 function App() {
@@ -19,10 +20,11 @@ function App() {
         </div>
 
         {/** container for main content*/}
-        <div className="absolute h-full w-full bg-neutral-950 flex flex-col">
-          <div className="relative">
+        <div className="absolute h-full w-full bg-neutral-950 ">
+          <div className="relative flex flex-col gap-6 bg-neutral-100">
             <Navbar />
             <Carousel />
+            <PerfumeCardContainer/>
           </div>
         </div>
       </div>

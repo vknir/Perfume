@@ -3,6 +3,15 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Carousel() {
   const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const clock = setInterval(() => {
+      setIndex((prev) => (prev + 1) % 4);
+    }, 4000);
+
+    return () => clearInterval(clock);
+  }, []);
+
+  
   const largeScreen = [
     " https://myop.in/cdn/shop/files/BHARTIYA_DESKTOP_BANNER.webp?",
     "https://myop.in/cdn/shop/files/new_website_b2g1_desktop_jan.webp?",
@@ -15,13 +24,7 @@ export default function Carousel() {
     "https://myop.in/cdn/shop/files/BHARTIYA_PHONEBANNER.webp?v=1737107201&width=800",
     "https://myop.in/cdn/shop/files/afterparty_banner_mobile.webp?v=1736494918&width=800",
   ];
-  useEffect(() => {
-    const clock = setInterval(() => {
-      setIndex((prev) => (prev + 1) % 4);
-    }, 4000);
-
-    return () => clearInterval(clock);
-  }, [index]);
+  
 
   return (
     <div className="relative h-fit w-full bg-neutral-100 px-7 flex justify-between items-center">
@@ -29,7 +32,7 @@ export default function Carousel() {
         <ChevronLeft size={40}/>
       </button>
       <img
-        className="rounded-xl h-[450px]"
+        className="rounded-xl h-[450px] animate-fade-in-scale"
         src={smallScreen[index]}
         alt="carousel"
       ></img>

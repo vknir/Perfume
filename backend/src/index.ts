@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import cors from 'cors'
 
 import { MONGO_URL } from "./config/config";
 import { PerfumeModel } from "./db/db";
@@ -16,8 +17,11 @@ async function main() {
 
 main();
 
+app.use(cors())
+
 app.get("/", async (req, res) => {
-  res.status(200).json({ message: "Smell perfume" });
+  const allPerfume = await PerfumeModel.find();
+  res.status(200).json({  allPerfume });
 });
 app.use(express.json());
 
@@ -45,7 +49,7 @@ app.post("/create", async (req, res) => {
       review,
       alt_img,
     });
-    
+
     res.status(200).json({ message: "data inserted successfully" });
   } catch (e) {
     res.status(500).json({ message: "unable to update" });
