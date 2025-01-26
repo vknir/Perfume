@@ -2,14 +2,13 @@ import { Menu, Search, ShoppingCart } from "lucide-react";
 
 export default function Navabar() {
   return (
-   
-    <div className="p-4 rounded-t-xl bg-neutral-100 flex justify-between items-center">
+    <div className="p-4 md:px-20 mt-2 rounded-t-xl bg-neutral-100 flex justify-between items-center">
       {/** import menu icon  */}
       <Menu strokeWidth={1} size={24} />
 
       {/** get img from url*/}
       <img
-        className="h-7"
+        className="h-7 md:h-10"
         alt="logo"
         src={`https://myop.in/cdn/shop/files/MYOP_LOGO_All_1.png?v=1709801663&width=330`}
       ></img>
