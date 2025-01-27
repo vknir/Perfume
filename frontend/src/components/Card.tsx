@@ -1,5 +1,5 @@
 import { CardProps } from "../types/types";
-import useScreenSize from "../hooks/useScreensize";
+import useScreenSize from "../hooks/useScreenSize";
 import { Link } from "react-router-dom";
 import { StarIcon } from "lucide-react";
 

@@ -4,6 +4,7 @@ import cors from 'cors'
 
 import { MONGO_URL } from "./config/config";
 import { PerfumeModel } from "./db/db";
+import { productRouter } from "./routes/product";
 
 const app = express();
 const port = process.env.PORT || 3000; // port if not available use port 3000;
@@ -55,3 +56,5 @@ app.post("/create", async (req, res) => {
     res.status(500).json({ message: "unable to update" });
   }
 });
+
+app.use('/product',productRouter)

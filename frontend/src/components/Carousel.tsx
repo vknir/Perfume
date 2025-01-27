@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import useScreenSize from "../hooks/useScreensize";
+import useScreenSize from "../hooks/useScreenSize";
 
 export default function Carousel() {
   // set index of image array to 0

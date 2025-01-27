@@ -17,6 +17,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const cors_1 = __importDefault(require("cors"));
 const config_1 = require("./config/config");
 const db_1 = require("./db/db");
+const product_1 = require("./routes/product");
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000; // port if not available use port 3000;
 function main() {
@@ -54,3 +55,4 @@ app.post("/create", (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         res.status(500).json({ message: "unable to update" });
     }
 }));
+app.use('/product', product_1.productRouter);
