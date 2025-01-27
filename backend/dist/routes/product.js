@@ -31,4 +31,26 @@ productRouter.get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, functi
         res.status(404).json({ messgae: "Product dest not exist" });
     }
 }));
-productRouter.post("/:id", (req, res) => { });
+productRouter.post("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = new mongoose_1.default.Types.ObjectId(req.params.id);
+    try {
+        const response = yield db_1.PerfumeModel.findById(id);
+        if (response) {
+            console.log(typeof (req.body.comments));
+            const newReview = response.review;
+            const newCount = (response.count || 1) + 1;
+            const newRating = ((newCount - 1) * (response.rating || 0) + parseFloat(req.body.rating)) / newCount;
+            yield db_1.PerfumeModel.findByIdAndUpdate(id, {
+                review: newReview,
+                count: newCount,
+                rating: newRating,
+            });
+            res.status(200).json("message received");
+        }
+        else
+            throw "Wrong product id";
+    }
+    catch (e) {
+        res.status(404).json({ messgae: "Product dest not exist" });
+    }
+}));

@@ -7,8 +7,8 @@ const PerfumeSchema = new Schema({
     price:[Number],
     description:String,
     primary_img:String,
-    alt_img: [String],
-    review:[String],
+    alt_img: Array<String>,
+    review:Array<String>,
     rating:Number,
     count:Number,
     size:[Number]

@@ -41,8 +41,8 @@ const PerfumeSchema = new mongoose_1.Schema({
     price: [Number],
     description: String,
     primary_img: String,
-    alt_img: [String],
-    review: [String],
+    alt_img: (Array),
+    review: (Array),
     rating: Number,
     count: Number,
     size: [Number]

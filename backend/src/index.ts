@@ -20,12 +20,16 @@ main();
 
 app.use(cors())
 
+
+// get data about bes sellers
 app.get("/", async (req, res) => {
   const allPerfume = await PerfumeModel.find();
   res.status(200).json({  allPerfume });
 });
 app.use(express.json());
 
+
+// insert data using create route
 app.post("/create", async (req, res) => {
   const {
     name,
@@ -57,4 +61,5 @@ app.post("/create", async (req, res) => {
   }
 });
 
+// handle all /products route
 app.use('/product',productRouter)
