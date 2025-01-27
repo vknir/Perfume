@@ -1,3 +1,5 @@
+
+
 export type Perfume = {
   name: string;
   count: number;
@@ -6,8 +8,8 @@ export type Perfume = {
   price: [number, number?];
   size: [number, number?];
   primary_img: string;
-  alt_img: [string];
-  review: [string];
+  alt_img: string[];
+  review: string[];
   _id: string;
 };
 
@@ -27,3 +29,7 @@ export type CardProps = {
   rating: number;
   name: string;
 };
+
+export type CarouselProps={
+  displayImg?: string[]
+}

@@ -1,4 +1,5 @@
 import { Menu, Search, ShoppingCart } from "lucide-react";
+import {Link} from 'react-router-dom'
 
 export default function Navabar() {
   return (
@@ -7,11 +8,13 @@ export default function Navabar() {
       <Menu strokeWidth={1} size={24} />
 
       {/** get img from url*/}
-      <img
-        className="h-7 md:h-10"
-        alt="logo"
-        src={`https://myop.in/cdn/shop/files/MYOP_LOGO_All_1.png?v=1709801663&width=330`}
-      ></img>
+      <Link to='/'>
+        <img
+          className="h-7 md:h-10"
+          alt="logo"
+          src={`https://myop.in/cdn/shop/files/MYOP_LOGO_All_1.png?v=1709801663&width=330`}
+        ></img>
+      </Link>
 
       {/** icon container containing search and shopping cart icon on right side*/}
       <div className="flex gap-7">

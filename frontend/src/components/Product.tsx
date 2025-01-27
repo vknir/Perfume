@@ -24,6 +24,14 @@ export default function Product() {
     });
   }, []);
 
+  // props to be passed to Carousel.tsx
+  const displayImg = product?.alt_img[0]
+    .split(",")
+    .concat(product?.primary_img);
+
+  if (displayImg) displayImg[0]?.replace("[", "");
+
+  // if screen == true, render mobile view
   if (!screen) {
     return (
       <>
@@ -34,6 +42,7 @@ export default function Product() {
             <Navbar />
 
             <div className="px-4 md:px-20 pb-5 md:pb-15 flex flex-col gap-6 bg-neutral-100 overflow-x-hidden rounded-b-2xl">
+              <Carousel displayImg={displayImg} />
               {/** contains all details of perfume */}
               <div className="w-full flex flex-col gap-4 font-sans py-5 border border-x-0 border-y-neutral-300">
                 <p className="text-2xl font-serif">{product?.name}</p>
@@ -88,14 +97,14 @@ export default function Product() {
               </div>
 
               <ShareButton text={product?.name || ""} />
-
-              <Review product={product}/>
+              <Review product={product} />
             </div>
             <Footer />
           </div>
         </div>
       </>
     );
+    //if screen false, render desktop view
   } else {
     return (
       <>
@@ -104,8 +113,8 @@ export default function Product() {
           {/** container for main content*/}
 
           <Navbar />
-          <div className="flex flex-between bg-neutral-100 pb-15 rounded-b-3xl">
-            <Carousel />
+          <div className="flex flex-between bg-neutral-100 pb-15">
+            <Carousel displayImg={displayImg} />
             <div className=" px-20 flex flex-col gap-6 bg-neutral-100 overflow-x-hidden ">
               {/** contains all details of perfume */}
               <div className="w-full flex flex-col gap-4 font-sans py-5 border-y-neutral-300">
@@ -159,12 +168,15 @@ export default function Product() {
                   Buy it now
                 </button>
               </div>
-
+                
+               {/** Share button to share on various social media */} 
               <ShareButton text={product?.name || ""} />
             </div>
-
           </div>
 
+          <div className="bg-neutral-100 w-full flex justify-center">
+            <Review product={product} />
+          </div>
           <Footer />
         </div>
       </>

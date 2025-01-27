@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import useScreenSize from "../hooks/useScreenSize";
+import { CarouselProps } from "../types/types";
 
-export default function Carousel() {
+export default function Carousel({ displayImg }: CarouselProps) {
   // set index of image array to 0
   const [index, setIndex] = useState(0);
 
@@ -29,6 +30,37 @@ export default function Carousel() {
   ];
 
   const screen = useScreenSize("(min-width:768px)");
+  if (displayImg) {
+    return (
+      <>
+        <div className="relative mt-10 h-fit w-full bg-neutral-100 px-7 md:px-16 flex justify-between items-center">
+          {/** Left arrow button */}
+          <button
+            className="hover:cursor-pointer"
+            onClick={() => setIndex((prev) => (prev + 3) % 4)}
+          >
+            <ChevronLeft size={40} />
+          </button>
+
+          {/** Product Display */}
+          {/** Image is displayed conditinally according screen size */}
+          <img
+            className="rounded-xl h-[450px] animate-fade-in-scale"
+            src={screen ? displayImg[index] : displayImg[index]}
+            alt="carousel"
+          ></img>
+
+          {/**Right arrow */}
+          <button
+            className="hover:cursor-pointer"
+            onClick={() => setIndex((prev) => (prev + 1) % 4)}
+          >
+            <ChevronRight size={40} />
+          </button>
+        </div>
+      </>
+    );
+  }
 
   return (
     <div className="relative mt-10 h-fit w-full bg-neutral-100 px-7 md:px-16 flex justify-between items-center">
